@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bayvs65mc7p6a"]
+
+[ext_resource type="Script" uid="uid://ddoaqynwy4xru" path="res://scenes/player/player.gd" id="1_8afob"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8afob"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dovo2"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_8afob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8afob")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_dovo2")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5123661, -0.33297223)
+
+[node name="CollisionRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(-30, -4.37114e-07, -1.1464118e-13, 2.5410987e-20, -2.1855696e-07, 30, -2.6226835e-06, 5, 1.3113416e-06, 0, 0, 0)
+hit_from_inside = true
+collide_with_areas = true

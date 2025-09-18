@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://mixw4uuhjd45"]
+
+[ext_resource type="PackedScene" uid="uid://bayvs65mc7p6a" path="res://scenes/player/player.tscn" id="1_qy3yy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_13j70"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4pxf"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qy3yy"]
+
+[node name="BaseSimulation" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.53097725, 2.4293365)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_13j70")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_x4pxf")
+
+[node name="Player" parent="." instance=ExtResource("1_qy3yy")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 1.4074489, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4534822, -3.3709567)
+mesh = SubResource("SphereMesh_qy3yy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4534822, 2.9066556)
+mesh = SubResource("SphereMesh_qy3yy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.605544, 1.4534822, -0.03724742)
+mesh = SubResource("SphereMesh_qy3yy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.269127, 1.4534822, -0.03724742)
+mesh = SubResource("SphereMesh_qy3yy")
