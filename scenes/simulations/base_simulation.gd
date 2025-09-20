@@ -13,7 +13,7 @@ func _ready() -> void:
 	gui.show()
 	for begin_text: String in begin_texts:
 		begin_texts_label.text = begin_text
-		await get_tree().create_timer(begin_text.length() / 3).timeout
+		await get_tree().create_timer(begin_text.length() / 10).timeout
 	gui.hide()
 	player.can_move = true
 	player.can_rotate = true

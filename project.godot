@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="Wake Up"
+run/main_scene="uid://ch1yra6hb6m8s"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://globals/scene_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [rendering]
 
