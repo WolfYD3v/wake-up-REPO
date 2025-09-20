@@ -1,39 +1,59 @@
-[gd_scene load_steps=5 format=3 uid="uid://mixw4uuhjd45"]
+[gd_scene load_steps=7 format=3 uid="uid://mixw4uuhjd45"]
 
+[ext_resource type="Script" uid="uid://kp5av8s6uqn7" path="res://scenes/simulations/base_simulation.gd" id="1_13j70"]
 [ext_resource type="PackedScene" uid="uid://bayvs65mc7p6a" path="res://scenes/player/player.tscn" id="1_qy3yy"]
+[ext_resource type="PackedScene" uid="uid://73pbyds7xast" path="res://scenes/simulations/simulation_leaver/simulation_leaver.tscn" id="3_x4pxf"]
+[ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="4_ulwdf"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_13j70"]
+[sub_resource type="Environment" id="Environment_13j70"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x4pxf"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_qy3yy"]
+[sub_resource type="LabelSettings" id="LabelSettings_x4pxf"]
+font = ExtResource("4_ulwdf")
+font_size = 65
 
 [node name="BaseSimulation" type="Node3D"]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.53097725, 2.4293365)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_13j70")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_x4pxf")
+script = ExtResource("1_13j70")
 
 [node name="Player" parent="." instance=ExtResource("1_qy3yy")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 1.4074489, 0)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4534822, -3.3709567)
-mesh = SubResource("SphereMesh_qy3yy")
+[node name="SimulationLeaver" parent="." instance=ExtResource("3_x4pxf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4534822, 2.9066556)
-mesh = SubResource("SphereMesh_qy3yy")
+[node name="Map" type="Node3D" parent="."]
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.605544, 1.4534822, -0.03724742)
-mesh = SubResource("SphereMesh_qy3yy")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_13j70")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.269127, 1.4534822, -0.03724742)
-mesh = SubResource("SphereMesh_qy3yy")
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BeginTextsLabel" type="Label" parent="GUI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_x4pxf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="leave_simulation" from="SimulationLeaver" to="." method="_on_simulation_leaver_leave_simulation"]

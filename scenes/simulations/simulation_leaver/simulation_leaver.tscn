@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://73pbyds7xast"]
+
+[ext_resource type="Script" uid="uid://q1xc1oat5jvo" path="res://scenes/simulations/simulation_leaver/simulation_leaver.gd" id="1_r0bc5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8yt7y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r0bc5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fobw2"]
+size = Vector3(4, 4, 4)
+
+[node name="SimulationLeaver" type="StaticBody3D"]
+script = ExtResource("1_r0bc5")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8yt7y")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_r0bc5")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape3D" parent="PlayerDetectionArea"]
+shape = SubResource("BoxShape3D_fobw2")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

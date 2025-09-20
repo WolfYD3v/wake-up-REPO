@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx235g3ifssim"]
+
+[ext_resource type="PackedScene" uid="uid://mixw4uuhjd45" path="res://scenes/simulations/base_simulation.tscn" id="1_k2hkm"]
+
+[node name="Simulation1" instance=ExtResource("1_k2hkm")]
+begin_texts = Array[String](["You have to Wake Up", "The more you Stay,", "less you will get."])

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://y16ed71olbgm"]
+
+[ext_resource type="PackedScene" uid="uid://dx235g3ifssim" path="res://scenes/simulations/all_simulations/simulation_1.tscn" id="1_5kkwg"]
+[ext_resource type="Script" uid="uid://cp11jst4yhtxt" path="res://scenes/simulations/simulations_layers/simulations_layers.gd" id="1_v8wxt"]
+
+[sub_resource type="Environment" id="Environment_v8wxt"]
+
+[node name="SimulationsLayers" type="Node3D"]
+script = ExtResource("1_v8wxt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.87581, 2.750677, -4.0102196)
+
+[node name="AllSimulations" type="Node3D" parent="."]
+process_mode = 4
+
+[node name="Simulation1" parent="AllSimulations" instance=ExtResource("1_5kkwg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v8wxt")
