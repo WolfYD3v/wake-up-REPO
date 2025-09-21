@@ -4,6 +4,7 @@ class_name Simulation
 @onready var player: Player = $Player
 @onready var begin_texts_label: Label = $GUI/Control/BeginTextsLabel
 @onready var gui: CanvasLayer = $GUI
+@onready var simulation_leaver: SimulationLeaver = $SimulationLeaver
 
 @export var begin_texts: Array[String] = []
 
@@ -23,7 +24,7 @@ func change_simulation_layer() -> void:
 	player.can_rotate = false
 	player.player_camera.fov = 15.0
 	await get_tree().create_timer(1.5).timeout
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/simulations/all_simulations/simulation_1.tscn")
 
 func _on_simulation_leaver_leave_simulation() -> void:
 	change_simulation_layer()

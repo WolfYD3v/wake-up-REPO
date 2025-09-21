@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Wake Up"
-run/main_scene="uid://ch1yra6hb6m8s"
+run/main_scene="uid://bmjlkkhnh1hcl"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://globals/scene_manager.gd"
+AutoScreenshot="*res://globals/auto_screenshot.gd"
+InputsLogger="*res://globals/inputs_logger.gd"
 
 [display]
 

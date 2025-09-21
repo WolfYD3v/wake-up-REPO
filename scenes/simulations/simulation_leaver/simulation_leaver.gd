@@ -1,6 +1,9 @@
 extends StaticBody3D
+class_name SimulationLeaver
 
 signal leave_simulation
+
+@export_range(1, 1) var next_simulation_id: int = 1
 
 var player: Player = null
 
