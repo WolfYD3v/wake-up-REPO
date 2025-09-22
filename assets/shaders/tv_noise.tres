@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://du8bei1wwuhkb"]
+
+[ext_resource type="Shader" uid="uid://cipa8rm5qjogc" path="res://assets/shaders/tv_noise_shader.gdshader" id="1_jlmm8"]
+
+[resource]
+shader = ExtResource("1_jlmm8")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.0088
+shader_parameter/offsetIntensity = 0.03
+shader_parameter/colorOffsetIntensity = 1.3

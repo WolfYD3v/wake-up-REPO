@@ -18,12 +18,12 @@ func start_auto_screenshot_process() -> void:
 	start_auto_screenshot_process()
 
 func _take_screenshot_game() -> void:
-	var nb_files_in_folder := DirAccess.get_files_at(USER_DATA_FOLDER).size()
-	var img := get_viewport().get_texture().get_image()
+	var nb_files_in_folder : int = DirAccess.get_files_at(USER_DATA_FOLDER).size()
+	var img : Image = get_viewport().get_texture().get_image()
 	img.save_png(USER_DATA_FOLDER + str(nb_files_in_folder + 1))
 
 func _take_screenshot_screen() -> void:
-	var nb_files_in_folder := DirAccess.get_files_at(USER_DATA_FOLDER).size()
+	var nb_files_in_folder : int = DirAccess.get_files_at(USER_DATA_FOLDER).size()
 	var img : Image = DisplayServer.screen_get_image(0)
 	img.save_png(USER_DATA_FOLDER + str(nb_files_in_folder + 1))
 	

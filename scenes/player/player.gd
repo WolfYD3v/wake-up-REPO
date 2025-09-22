@@ -13,9 +13,11 @@ class_name Player
 var rotation_steps: int = 10
 var is_rotating: bool = false
 
-@export_range(45.0, 70.0) var z_move_factor: float = 45.0
+@export_range(1250.0, 4000.0) var z_move_factor: float = 1250.0
 var walk_steps: int = 10
 var is_moving: bool = false
+
+var inside_delta: float = 0.0
 
 func _ready() -> void:
 	pass
@@ -26,8 +28,10 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_RIGHT):
 		_rotate(-y_rotation_factor)
 	if Input.is_key_pressed(KEY_UP):
-		_move(-z_move_factor)
+		_move(-z_move_factor * inside_delta)
 
+func _process(delta: float) -> void:
+	inside_delta = delta
 
 func detect_collisions() -> bool:
 	return collision_raycast.is_colliding()
@@ -48,8 +52,9 @@ func _move(move_factor: float) -> void:
 			is_moving = true
 			var angle = get_rotation().y 
 			for move_step: int in range(walk_steps):
-				velocity = Vector3(sin(angle),0, cos(angle)) * move_factor / walk_steps
-				move_and_slide()
+				if not movement_raycast.is_colliding():
+					velocity = Vector3(sin(angle),0, cos(angle)) * move_factor / walk_steps
+					move_and_slide()
 				await get_tree().create_timer(0.05).timeout
 			await get_tree().create_timer(0.2).timeout
 			is_moving = false

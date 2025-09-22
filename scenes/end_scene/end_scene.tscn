@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://deh1xco6ewkf7"]
+
+[ext_resource type="Script" uid="uid://il5t4rxafdgm" path="res://scenes/end_scene/end_scene.gd" id="1_beabo"]
+
+[sub_resource type="Environment" id="Environment_beabo"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n06uv"]
+size = Vector2(6, 3.5)
+
+[sub_resource type="ImageTexture" id="ImageTexture_beabo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoerb"]
+albedo_texture = SubResource("ImageTexture_beabo")
+
+[sub_resource type="BoxMesh" id="BoxMesh_beabo"]
+size = Vector3(6.5, 4, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eoerb"]
+size = Vector3(0.25, 4, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n06uv"]
+size = Vector3(6, 0.25, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ef2h"]
+size = Vector3(2.5, 0.7, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2s2l0"]
+size = Vector3(2.7, 0.2, 0.35)
+
+[node name="EndScene" type="Node3D"]
+script = ExtResource("1_beabo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_beabo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_energy = 4.0
+spot_range = 5.3157806
+
+[node name="Computer" type="Node3D" parent="."]
+
+[node name="Screen" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_n06uv")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_eoerb")
+
+[node name="Backscreen" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0940721)
+mesh = SubResource("BoxMesh_beabo")
+
+[node name="LeftPart" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1167681, 0, -0.0031143427)
+mesh = SubResource("BoxMesh_eoerb")
+
+[node name="RightPart" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1244214, 0, -0.0031143427)
+mesh = SubResource("BoxMesh_eoerb")
+
+[node name="UpPart" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8761756, 0)
+mesh = SubResource("BoxMesh_n06uv")
+
+[node name="DownPart" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8721234, 0)
+mesh = SubResource("BoxMesh_n06uv")
+
+[node name="SupportUp" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2503214, -0.052868426)
+mesh = SubResource("BoxMesh_6ef2h")
+
+[node name="SupportDown" type="MeshInstance3D" parent="Computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6496549, -0.052868426)
+mesh = SubResource("BoxMesh_2s2l0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "EXIT FORCED FULLSCREEN"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

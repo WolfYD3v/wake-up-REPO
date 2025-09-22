@@ -7,14 +7,6 @@ script = ExtResource("1_fsom3")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="GUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-
 [node name="PlayButton" type="Button" parent="GUI"]
 anchors_preset = 8
 anchor_left = 0.5

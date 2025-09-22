@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Question" load_steps=2 format=3 uid="uid://fv5pwlsmr2ok"]
+
+[ext_resource type="Script" uid="uid://xrm8hh10at07" path="res://scenes/simulations/questioning_scene/question.gd" id="1_t2uih"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_t2uih")
+metadata/_custom_type_script = "uid://xrm8hh10at07"

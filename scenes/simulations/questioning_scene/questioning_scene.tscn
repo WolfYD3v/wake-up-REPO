@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://804fliq83aew"]
+
+[ext_resource type="Script" uid="uid://bn0m1fe76duh0" path="res://scenes/simulations/questioning_scene/questioning_scene.gd" id="1_u4ah0"]
+[ext_resource type="Script" uid="uid://xrm8hh10at07" path="res://scenes/simulations/questioning_scene/question.gd" id="2_genw2"]
+
+[sub_resource type="Resource" id="Resource_genw2"]
+script = ExtResource("2_genw2")
+question = "So what did you do?"
+good_answer = "Nothing"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_imf5x"]
+script = ExtResource("2_genw2")
+question = "I repeat, what did you do?"
+good_answer = "No... nothing"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_irnnj"]
+script = ExtResource("2_genw2")
+question = "What did you do..."
+good_answer = "Hu?"
+bad_answers = Array[String](["Tell me, go on!"])
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_d4ars"]
+script = ExtResource("2_genw2")
+question = "Still acting like you are an angel..."
+good_answer = "..."
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_vgasg"]
+script = ExtResource("2_genw2")
+question = "I suggest you keep sleep ok."
+good_answer = ">>>"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[node name="QuestioningScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4ah0")
+questions = Array[ExtResource("2_genw2")]([SubResource("Resource_genw2"), SubResource("Resource_imf5x"), SubResource("Resource_irnnj"), SubResource("Resource_d4ars"), SubResource("Resource_vgasg")])
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Elements" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="Elements"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Elements"]
+layout_mode = 2
+alignment = 1

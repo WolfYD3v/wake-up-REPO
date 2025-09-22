@@ -1,18 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx235g3ifssim"]
+[gd_scene load_steps=6 format=3 uid="uid://dx235g3ifssim"]
 
 [ext_resource type="PackedScene" uid="uid://mixw4uuhjd45" path="res://scenes/simulations/base_simulation.tscn" id="1_k2hkm"]
 [ext_resource type="PackedScene" uid="uid://bd744hjv1mwyl" path="res://assets/models/simulation_wall.tscn" id="2_4n7ye"]
 [ext_resource type="PackedScene" uid="uid://b3j2wg0xfdrtt" path="res://assets/models/simulation_door.tscn" id="3_dv3no"]
+[ext_resource type="PackedScene" uid="uid://bko2ce7x1u4wo" path="res://assets/models/simulation_floor.tscn" id="4_elcwl"]
 [ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="4_nsos3"]
 
 [node name="Simulation1" instance=ExtResource("1_k2hkm")]
 begin_texts = Array[String](["You have to Wake Up", "The more you Stay,", "less you will get."])
 
 [node name="Player" parent="." index="0"]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 1.7914438)
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 1.6985266)
 
 [node name="SimulationLeaver" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.544792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7047397, -8.544792)
 
 [node name="SimulationWall" parent="Map" index="0" instance=ExtResource("2_4n7ye")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3)
@@ -89,12 +90,75 @@ transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.0
 [node name="SimulationDoor" parent="Map" index="24" instance=ExtResource("3_dv3no")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
+[node name="SimulationWall25" parent="Map" index="25" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2)
+
+[node name="SimulationWall26" parent="Map" index="26" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SimulationWall27" parent="Map" index="27" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 2)
+
+[node name="SimulationWall28" parent="Map" index="28" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 0)
+
+[node name="SimulationWall29" parent="Map" index="29" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2)
+
+[node name="SimulationWall30" parent="Map" index="30" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="SimulationWall31" parent="Map" index="31" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
+
+[node name="SimulationWall32" parent="Map" index="32" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4)
+
+[node name="SimulationWall33" parent="Map" index="33" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -2)
+
+[node name="SimulationWall34" parent="Map" index="34" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -4)
+
+[node name="SimulationWall35" parent="Map" index="35" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -2)
+
+[node name="SimulationWall36" parent="Map" index="36" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -4)
+
+[node name="SimulationWall37" parent="Map" index="37" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -6)
+
+[node name="SimulationWall38" parent="Map" index="38" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8)
+
+[node name="SimulationWall39" parent="Map" index="39" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -6)
+
+[node name="SimulationWall40" parent="Map" index="40" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -8)
+
+[node name="SimulationWall41" parent="Map" index="41" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -6)
+
+[node name="SimulationWall42" parent="Map" index="42" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -8)
+
+[node name="SimulationWall43" parent="Map" index="43" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+
+[node name="SimulationWall45" parent="Map" index="44" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -10)
+
+[node name="SimulationWall47" parent="Map" index="45" instance=ExtResource("4_elcwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -10)
+
 [node name="Label3D" type="Label3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5521153, -0.06587398)
-text = "Left/Right arrows
--> Turn around
+text = "Left /Right arrows
+->Turn around
 
 Up arrow
--> Walk"
+->Walk"
 font = ExtResource("4_nsos3")
 outline_size = 0

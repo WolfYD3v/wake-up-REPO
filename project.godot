@@ -22,6 +22,8 @@ InputsLogger="*res://globals/inputs_logger.gd"
 
 [display]
 
+window/size/mode=2
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [rendering]
