@@ -12,7 +12,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if not _auto_log_inputs_enabled:
-			push_error("Auto inputs logging is not enable")
 			return
 		if event.is_pressed():
 			_inputs.append(

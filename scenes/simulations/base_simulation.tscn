@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://804fliq83aew" path="res://scenes/simulations/questioning_scene/questioning_scene.tscn" id="5_2u8xy"]
 
 [sub_resource type="Environment" id="Environment_13j70"]
+background_mode = 1
+background_color = Color(0.21230483, 0.21230483, 0.21230483, 1)
+fog_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_x4pxf"]
 font = ExtResource("4_ulwdf")

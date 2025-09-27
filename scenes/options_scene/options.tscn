@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6xaio6h3qg4t"]
+
+[ext_resource type="Script" uid="uid://dujaxdxc10wjo" path="res://scenes/options_scene/options.gd" id="1_biovg"]
+[ext_resource type="PackedScene" uid="uid://d27kdytywt0ui" path="res://scenes/options_scene/output_server_config/output_server_config.tscn" id="2_cnbx3"]
+
+[node name="Options" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_biovg")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21176471, 0.21176471, 0.21176471, 0.7921569)
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="OutputServerButton" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "CONFIGURE OUTPUT SERVER"
+
+[node name="KeyInputFileDialog" type="FileDialog" parent="Buttons/OutputServerButton"]
+oversampling_override = 1.0
+mode = 2
+title = "Open a File"
+initial_position = 1
+size = Vector2i(684, 360)
+dialog_hide_on_ok = true
+dialog_autowrap = true
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="CloseButton" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "CLOSE"
+
+[node name="FileSelectCover" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3137255, 0.3137255, 0.3137255, 0.6627451)
+
+[node name="OutputServerConfig" parent="." instance=ExtResource("2_cnbx3")]
+layout_mode = 1
+
+[connection signal="pressed" from="Buttons/OutputServerButton" to="." method="_on_output_server_button_pressed"]
+[connection signal="file_selected" from="Buttons/OutputServerButton/KeyInputFileDialog" to="." method="_on_key_input_file_dialog_file_selected"]
+[connection signal="pressed" from="Buttons/CloseButton" to="." method="_on_close_button_pressed"]

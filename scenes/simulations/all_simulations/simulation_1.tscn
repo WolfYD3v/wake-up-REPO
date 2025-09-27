@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="4_nsos3"]
 
 [node name="Simulation1" instance=ExtResource("1_k2hkm")]
+next_simulation_id = 2
 begin_texts = Array[String](["You have to Wake Up", "The more you Stay,", "less you will get."])
 
 [node name="Player" parent="." index="0"]

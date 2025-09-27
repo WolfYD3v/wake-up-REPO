@@ -7,6 +7,7 @@ class_name Simulation
 @onready var simulation_leaver: SimulationLeaver = $SimulationLeaver
 @onready var questioning_scene: QuestioningScene = $GUI/QuestioningScene
 
+@export_range(1, 3) var next_simulation_id: int = 1
 @export var begin_texts: Array[String] = []
 
 var tween
@@ -37,7 +38,7 @@ func change_simulation_layer() -> void:
 	questioning_scene.show()
 	questioning_scene.start_questioning()
 	await questioning_scene.questioning_ended
-	get_tree().change_scene_to_file("res://scenes/simulations/all_simulations/simulation_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/simulations/all_simulations/simulation_" + str(next_simulation_id) + ".tscn")
 
 func _on_simulation_leaver_leave_simulation() -> void:
 	change_simulation_layer()

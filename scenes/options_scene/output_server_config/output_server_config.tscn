@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://d27kdytywt0ui"]
+
+[ext_resource type="Script" uid="uid://bw8qr78v5v7pt" path="res://scenes/options_scene/output_server_config/output_server_config.gd" id="1_1xqis"]
+
+[node name="OutputServerConfig" type="Control"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xqis")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21176471, 0.21176471, 0.21176471, 0.8862745)
+
+[node name="Nodes" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ServerOutputIpAdressLineEdit" type="LineEdit" parent="Nodes"]
+layout_mode = 2
+text = "192.168.13.12"
+max_length = 13
+
+[node name="Buttons" type="HBoxContainer" parent="Nodes"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="Nodes/Buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "RESET"
+
+[node name="ApplyButton" type="Button" parent="Nodes/Buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "APPLY"
+
+[node name="CloseButton" type="Button" parent="Nodes"]
+layout_mode = 2
+focus_mode = 0
+text = "CLOSE"
+
+[node name="Cover" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3137255, 0.3137255, 0.3137255, 0.6627451)
+
+[connection signal="pressed" from="Nodes/Buttons/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Nodes/Buttons/ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="Nodes/CloseButton" to="." method="_on_close_button_pressed"]

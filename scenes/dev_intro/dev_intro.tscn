@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtekirqylv7qi"]
+
+[ext_resource type="Theme" uid="uid://c82kvpui076gy" path="res://assets/themes/gui_theme.tres" id="1_1jwdp"]
+[ext_resource type="Script" uid="uid://b2ablce8cl25s" path="res://scenes/dev_intro/dev_intro.gd" id="1_t7aej"]
+[ext_resource type="Texture2D" uid="uid://rhyxgfrtmg1h" path="res://icon.svg" id="2_a37vv"]
+[ext_resource type="Texture2D" uid="uid://dae6udafg5g2x" path="res://assets/images/Photo de profil.png" id="3_sc2bl"]
+[ext_resource type="Shader" uid="uid://bo5hj2qj1y5rr" path="res://assets/shaders/static.gdshader" id="5_33wae"]
+[ext_resource type="AudioStream" uid="uid://dysy8i2p21m0l" path="res://assets/musics/775441_Limbo.mp3" id="6_cg0mb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cg0mb"]
+viewport_path = NodePath("Player3DScene")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cg0mb"]
+shader = ExtResource("5_33wae")
+shader_parameter/amount = 10.0
+shader_parameter/time_speed = 6500.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cg0mb"]
+
+[node name="DevIntro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1jwdp")
+script = ExtResource("1_t7aej")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+
+[node name="GUI_Elements" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Godot" type="TextureRect" parent="GUI_Elements"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -143.0
+offset_right = 143.0
+offset_bottom = -15.0
+grow_vertical = 0
+texture = ExtResource("2_a37vv")
+
+[node name="Myself" type="TextureRect" parent="GUI_Elements"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_top = -143.0
+offset_right = -16.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_sc2bl")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="GUI_Elements"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -251.0
+offset_top = -96.0
+offset_right = 251.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Game made by him
+with the Grand beloved Godot Engine 4.5"
+horizontal_alignment = 1
+
+[node name="Infos" type="Control" parent="GUI_Elements"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfosLabel" type="Label" parent="GUI_Elements/Infos"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.5
+offset_right = 20.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "This game contains loud noise.
+To preserve your ears please lower your volume."
+horizontal_alignment = 1
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="GUI_Elements/Infos"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -110.0
+offset_right = 210.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerRendered" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -623.0
+offset_right = 445.0
+offset_bottom = 287.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("ViewportTexture_cg0mb")
+expand_mode = 1
+
+[node name="StaticTVShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_cg0mb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.29411766, 0.29411766, 0.29411766, 0.6509804)
+
+[node name="RedLayer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.3137255)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cg0mb")
+mix_target = 1
+
+[node name="Player3DScene" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="Camera3D" type="Camera3D" parent="Player3DScene"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player3DScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("CapsuleMesh_cg0mb")
