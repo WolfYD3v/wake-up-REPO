@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://mixw4uuhjd45"]
+[gd_scene load_steps=11 format=3 uid="uid://mixw4uuhjd45"]
 
 [ext_resource type="Script" uid="uid://kp5av8s6uqn7" path="res://scenes/simulations/base_simulation.gd" id="1_13j70"]
 [ext_resource type="PackedScene" uid="uid://bayvs65mc7p6a" path="res://scenes/player/player.tscn" id="1_qy3yy"]
 [ext_resource type="PackedScene" uid="uid://73pbyds7xast" path="res://scenes/simulations/simulation_leaver/simulation_leaver.tscn" id="3_x4pxf"]
 [ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="4_ulwdf"]
 [ext_resource type="PackedScene" uid="uid://804fliq83aew" path="res://scenes/simulations/questioning_scene/questioning_scene.tscn" id="5_2u8xy"]
+[ext_resource type="AudioStream" uid="uid://c8yy6fv4afi50" path="res://assets/sfxs/text.wav" id="6_q2dv1"]
+[ext_resource type="PackedScene" uid="uid://bex4361vh4umg" path="res://scenes/advanced_interface/advanced_interface.tscn" id="6_swdml"]
+[ext_resource type="AudioStream" uid="uid://br5u7fd7vh6yl" path="res://assets/musics/simulations_ambiance.wav" id="7_uob6b"]
 
 [sub_resource type="Environment" id="Environment_13j70"]
 background_mode = 1
@@ -62,5 +65,17 @@ autowrap_mode = 3
 
 [node name="QuestioningScene" parent="GUI" instance=ExtResource("5_2u8xy")]
 visible = false
+
+[node name="AdvancedInterface" parent="GUI" instance=ExtResource("6_swdml")]
+visible = false
+can_ask = false
+
+[node name="ButtonSFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_q2dv1")
+
+[node name="AmbianceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_uob6b")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="leave_simulation" from="SimulationLeaver" to="." method="_on_simulation_leaver_leave_simulation"]

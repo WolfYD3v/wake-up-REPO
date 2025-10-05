@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://804fliq83aew"]
+[gd_scene load_steps=14 format=3 uid="uid://804fliq83aew"]
 
 [ext_resource type="Script" uid="uid://bn0m1fe76duh0" path="res://scenes/simulations/questioning_scene/questioning_scene.gd" id="1_u4ah0"]
 [ext_resource type="Script" uid="uid://xrm8hh10at07" path="res://scenes/simulations/questioning_scene/question.gd" id="2_genw2"]
+[ext_resource type="Material" uid="uid://du8bei1wwuhkb" path="res://assets/shaders/tv_noise.tres" id="3_imf5x"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="3_irnnj"]
 
 [sub_resource type="Resource" id="Resource_genw2"]
 script = ExtResource("2_genw2")
@@ -34,18 +36,89 @@ question = "I suggest you keep sleep ok."
 good_answer = ">>>"
 metadata/_custom_type_script = "uid://xrm8hh10at07"
 
-[node name="QuestioningScene" type="Control"]
-layout_mode = 3
+[sub_resource type="Environment" id="Environment_genw2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_genw2"]
+size = Vector3(6, 0.2, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_imf5x"]
+size = Vector3(0.2, 6, 6)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_genw2"]
+
+[node name="QuestioningScene" type="Node3D"]
+script = ExtResource("1_u4ah0")
+questions = Array[ExtResource("2_genw2")]([SubResource("Resource_genw2"), SubResource("Resource_imf5x"), SubResource("Resource_irnnj"), SubResource("Resource_d4ars"), SubResource("Resource_vgasg")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_genw2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.86602545, -0.43301272, 0.25, 0.12940952, 0.6770772, 0.72444445, -0.48296294, -0.5950349, 0.642402, 0, 1.5, -0.6)
+
+[node name="Ground1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.5, -2)
+mesh = SubResource("BoxMesh_genw2")
+skeleton = NodePath("")
+
+[node name="Ground2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 4.5, -2)
+mesh = SubResource("BoxMesh_genw2")
+skeleton = NodePath("")
+
+[node name="Wall1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 3, 1.5, -2)
+mesh = SubResource("BoxMesh_imf5x")
+skeleton = NodePath("")
+
+[node name="Wall2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -3, 1.5, -2)
+mesh = SubResource("BoxMesh_imf5x")
+skeleton = NodePath("")
+
+[node name="Wall3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 0.99999994, 0, 0.99999994, 0, -4.3711385e-08, 0, 1.5, -5)
+mesh = SubResource("BoxMesh_imf5x")
+skeleton = NodePath("")
+
+[node name="Wall4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 0.99999994, 0, 0.99999994, 0, -4.3711385e-08, 0, 1.5, 1)
+mesh = SubResource("BoxMesh_imf5x")
+skeleton = NodePath("")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
+light_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+light_energy = 16.0
+light_negative = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.6, -4.2999997)
+mesh = SubResource("CapsuleMesh_genw2")
+skeleton = NodePath("")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Elements" type="VBoxContainer" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_u4ah0")
-questions = Array[ExtResource("2_genw2")]([SubResource("Resource_genw2"), SubResource("Resource_imf5x"), SubResource("Resource_irnnj"), SubResource("Resource_d4ars"), SubResource("Resource_vgasg")])
+theme = ExtResource("3_irnnj")
+alignment = 1
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="QuestionLabel" type="Label" parent="GUI/Elements"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="GUI/Elements"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Filler" type="ColorRect" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,20 +126,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Elements" type="VBoxContainer" parent="."]
-layout_mode = 1
+[node name="StaticTVShader" type="ColorRect" parent="GUI"]
+z_index = 2
+material = ExtResource("3_imf5x")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
-[node name="QuestionLabel" type="Label" parent="Elements"]
-layout_mode = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Buttons" type="HBoxContainer" parent="Elements"]
-layout_mode = 2
-alignment = 1
+[node name="SFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]

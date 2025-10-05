@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://y0vukv4hsb6a"]
+[gd_scene load_steps=12 format=3 uid="uid://y0vukv4hsb6a"]
 
 [ext_resource type="Script" uid="uid://bfhdle3iuc0ow" path="res://scenes/simulations/all_simulations/simulation_3.gd" id="1_lwam6"]
+[ext_resource type="PackedScene" uid="uid://bex4361vh4umg" path="res://scenes/advanced_interface/advanced_interface.tscn" id="2_j7w1a"]
+[ext_resource type="Shader" uid="uid://bo5hj2qj1y5rr" path="res://assets/shaders/static.gdshader" id="2_qnsiw"]
+[ext_resource type="PackedScene" uid="uid://bko2ce7x1u4wo" path="res://assets/models/simulation_floor.tscn" id="3_4nqq7"]
+[ext_resource type="AudioStream" uid="uid://de7yiw6c11hpj" path="res://assets/musics/simulation3_ambiance.mp3" id="4_1gh4i"]
+[ext_resource type="PackedScene" uid="uid://bd744hjv1mwyl" path="res://assets/models/simulation_wall.tscn" id="4_j7w1a"]
+[ext_resource type="Material" uid="uid://du8bei1wwuhkb" path="res://assets/shaders/tv_noise.tres" id="4_pqo50"]
+[ext_resource type="PackedScene" uid="uid://bayvs65mc7p6a" path="res://scenes/player/player.tscn" id="5_1gh4i"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4nqq7"]
+viewport_path = NodePath("World")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pqo50"]
+shader = ExtResource("2_qnsiw")
+shader_parameter/radius = 0.650000030875
+shader_parameter/softness = 0.38
+shader_parameter/intensity = 1.0830000514425
+shader_parameter/contrast = 1.3570000407075
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Environment" id="Environment_pqo50"]
+background_mode = 1
+background_color = Color(0.21230483, 0.21230483, 0.21230483, 1)
+fog_enabled = true
 
 [node name="Simulation3" type="Control"]
 layout_mode = 3
@@ -20,14 +43,209 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TalkLabel" type="Label" parent="."]
+[node name="WorldPOV" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -426.0
+offset_right = 197.0
+offset_bottom = 449.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4nqq7")
+
+[node name="TVAnalogicShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pqo50")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopCornerPart" type="HBoxContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_bottom = 40.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="TopCornerPart"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.2784314, 0.6039216, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Connected"
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="TopCornerPart"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="InfosLabel" type="RichTextLabel" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -132.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.2784314, 0.6039216, 0, 1)
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "[u]Renderer:[/u] OpenGL (captured environnement to flat screen texture)
+[u]Video:[/u] 360p 30fps
+[u]Sound:[/u] medium quality
+[u]Packets:[/u] 2.7mb (6sec)
+[u]Camera:[/u] Digital-EXDagh500K"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="Black" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AdvancedInterface" parent="." instance=ExtResource("2_j7w1a")]
+z_index = 1
+layout_mode = 1
+
+[node name="StartElement" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="StartElement"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "#53981 has been
+confined"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Disconnected" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Disconnected"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -11.5
-offset_bottom = 11.5
+offset_left = 189.0
+offset_top = -189.5
+offset_bottom = 189.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Lost connection with the Output Display Server
+出力表示サーバーとの接続が切断されました
+Connection perdue avec l'Output Display Server
+Verbindung zum Output Display Server unterbrochen
+与输出显示服务器断开连接
+Conexión perdida con el servidor de visualización de salida
+Connessione persa con Output Display Server
+출력 디스플레이 서버와의 연결이 끊어졌습니다
+Потеряна связь с сервером отображения вывода
+Ligação perdida com o Output Display Server"
+vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="StaticTVShader" type="ColorRect" parent="."]
+z_index = 2
+material = ExtResource("4_pqo50")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="World" type="SubViewport" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_pqo50")
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="World/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.371141e-08, 1)
+light_color = Color(1, 1, 0, 1)
+light_energy = 4.0
+spot_range = 9.3031
+spot_angle = 28.002645
+
+[node name="Player" parent="World" instance=ExtResource("5_1gh4i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+can_move = false
+can_rotate = false
+
+[node name="Map" type="Node3D" parent="World"]
+
+[node name="SimulationGround" parent="World/Map" instance=ExtResource("3_4nqq7")]
+
+[node name="SimulationWall" parent="World/Map" instance=ExtResource("4_j7w1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.70000005)
+
+[node name="SimulationWall2" parent="World/Map" instance=ExtResource("4_j7w1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.6999999)
+
+[node name="SimulationWall3" parent="World/Map" instance=ExtResource("4_j7w1a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.7, 1.4, 8.195639e-08)
+
+[node name="SimulationWall4" parent="World/Map" instance=ExtResource("4_j7w1a")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7000001, 1.4, 8.195639e-08)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AmbianceAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1gh4i")
+volume_db = -5.0
+pitch_scale = 0.3
+parameters/looping = true
+
+[connection signal="asking_started" from="AdvancedInterface" to="." method="_on_advanced_interface_asking_started"]

@@ -1,0 +1,164 @@
+[gd_scene load_steps=4 format=3 uid="uid://3hhrjw0wlvdo"]
+
+[ext_resource type="Script" uid="uid://d2raom2xhwqx4" path="res://scenes/simulations/all_simulations/simulation_4.gd" id="1_sv8rj"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="1_vwk72"]
+[ext_resource type="PackedScene" uid="uid://bex4361vh4umg" path="res://scenes/advanced_interface/advanced_interface.tscn" id="3_bx68y"]
+
+[node name="Simulation4" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vwk72")
+script = ExtResource("1_sv8rj")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Areas" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionningSection" type="Control" parent="Areas"]
+custom_minimum_size = Vector2(570, 0)
+layout_mode = 2
+
+[node name="Questions" type="ItemList" parent="Areas/QuestionningSection"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+focus_mode = 0
+auto_height = true
+item_count = 1
+item_0/text = "We know who is your friend, tell me where is he."
+
+[node name="DownArea" type="VBoxContainer" parent="Areas/QuestionningSection"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -235.0
+offset_right = 227.0
+grow_vertical = 0
+alignment = 2
+
+[node name="Line" type="ColorRect" parent="Areas/QuestionningSection/DownArea"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="UsersRichTextLabel" type="RichTextLabel" parent="Areas/QuestionningSection/DownArea"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[u]Users:[/u]"
+fit_content = true
+
+[node name="Users" type="VBoxContainer" parent="Areas/QuestionningSection/DownArea"]
+layout_mode = 2
+
+[node name="Line2" type="ColorRect" parent="Areas/QuestionningSection/DownArea"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="TimerLabelRichTextLabel" type="RichTextLabel" parent="Areas/QuestionningSection/DownArea"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[u]Time:[/u]"
+fit_content = true
+
+[node name="TimerLabel" type="Label" parent="Areas/QuestionningSection/DownArea"]
+layout_mode = 2
+text = "0.0s"
+
+[node name="Line" type="ColorRect" parent="Areas"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="ChatSection" type="Control" parent="Areas"]
+custom_minimum_size = Vector2(572, 0)
+layout_mode = 2
+
+[node name="BG" type="ColorRect" parent="Areas/ChatSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="Chat" type="VBoxContainer" parent="Areas/ChatSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Loading" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2784314, 0.6039216, 0, 0.5882353)
+
+[node name="LoadingStateLabel" type="Label" parent="Loading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "LOADING..."
+
+[node name="AdvancedInterface" parent="." instance=ExtResource("3_bx68y")]
+visible = false
+z_index = 1
+layout_mode = 1
+can_ask = false
+show_on_startup = false
+
+[node name="REFLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 200.0
+offset_top = -335.0
+offset_right = 1012.0
+offset_bottom = -266.0
+theme_override_font_sizes/font_size = 50
+text = "SUPERHOT TEXT WRITTING REF!!!!!"
+
+[node name="SFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+
+[connection signal="item_selected" from="Areas/QuestionningSection/Questions" to="." method="_on_questions_item_selected"]
+[connection signal="mail_selected" from="AdvancedInterface" to="." method="_on_advanced_interface_mail_selected"]

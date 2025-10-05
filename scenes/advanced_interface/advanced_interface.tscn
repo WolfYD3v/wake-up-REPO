@@ -1,0 +1,335 @@
+[gd_scene load_steps=4 format=3 uid="uid://bex4361vh4umg"]
+
+[ext_resource type="Script" uid="uid://60rkx6bs58xs" path="res://scenes/advanced_interface/advanced_interface.gd" id="1_3wb1e"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="1_104yh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8y1dy"]
+bg_color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="AdvancedInterface" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_104yh")
+script = ExtResource("1_3wb1e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="NetworkTraficDebugger" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/NetworkTraficDebugger"]
+layout_mode = 2
+text = "NETWORK TRAFIC DEBUGGER"
+
+[node name="Line" type="ColorRect" parent="VBoxContainer/HBoxContainer/NetworkTraficDebugger"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="RequstsItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/NetworkTraficDebugger"]
+custom_minimum_size = Vector2(350, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 10
+allow_search = false
+
+[node name="Line" type="ColorRect" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="ButtonsArea" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonsSelector" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ButtonsArea"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="MailboxButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsArea/ButtonsSelector"]
+layout_mode = 2
+focus_mode = 0
+text = "Mailbox"
+
+[node name="AskerButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsArea/ButtonsSelector"]
+layout_mode = 2
+focus_mode = 0
+text = "Ask"
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ButtonsArea"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="MailboxButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsArea/Buttons"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+text = "Mailbox"
+
+[node name="SimulationsLayersButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsArea/Buttons"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+text = "Simulation layers"
+
+[node name="AskerButton" type="Button" parent="VBoxContainer/HBoxContainer/ButtonsArea/Buttons"]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+text = "Ask"
+
+[node name="SimulationsLayers" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_104yh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SimulationsLayers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="ColorRect" parent="SimulationsLayers/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SimulationsLayers/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LayersItemList" type="ItemList" parent="SimulationsLayers/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+focus_mode = 0
+item_count = 23
+item_0/text = "Layer 23"
+item_0/disabled = true
+item_1/text = "Layer 22"
+item_1/disabled = true
+item_2/text = "Layer 21"
+item_2/disabled = true
+item_3/text = "Layer 20"
+item_3/disabled = true
+item_4/text = "Layer 19"
+item_4/disabled = true
+item_5/text = "Layer 18"
+item_5/disabled = true
+item_6/text = "Layer 17"
+item_6/disabled = true
+item_7/text = "Layer 16"
+item_7/disabled = true
+item_8/text = "Layer 15"
+item_8/disabled = true
+item_9/text = "Layer 14"
+item_9/disabled = true
+item_10/text = "Layer 13"
+item_10/disabled = true
+item_11/text = "Layer 12"
+item_11/disabled = true
+item_12/text = "Layer 11"
+item_12/disabled = true
+item_13/text = "Layer 10"
+item_14/text = "Layer 9"
+item_15/text = "Layer 8"
+item_16/text = "Layer 7"
+item_17/text = "Layer 6"
+item_18/text = "Layer 5"
+item_19/text = "Layer 4"
+item_20/text = "Layer 3"
+item_21/text = "Layer 2"
+item_22/text = "Layer 1"
+
+[node name="BG" type="ColorRect" parent="SimulationsLayers/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="Mailbox" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_104yh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Mailbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="ColorRect" parent="Mailbox/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Mailbox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MailsPart" type="VBoxContainer" parent="Mailbox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MailboxLabel" type="Label" parent="Mailbox/VBoxContainer/HBoxContainer/MailsPart"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Mails"
+
+[node name="Line" type="ColorRect" parent="Mailbox/VBoxContainer/HBoxContainer/MailsPart"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="MailsItemList" type="ItemList" parent="Mailbox/VBoxContainer/HBoxContainer/MailsPart"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+allow_search = false
+item_count = 7
+item_0/text = "He is ready to talk"
+item_1/text = "Invitation"
+item_2/text = "News about him?"
+item_3/text = "Hurry up!"
+item_4/text = "Update on the case"
+item_5/text = "Advanced interface done"
+item_6/text = "Promotion"
+
+[node name="Line" type="ColorRect" parent="Mailbox/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(2.5, 0)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="ReadingPart" type="VBoxContainer" parent="Mailbox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WhoLabel" type="Label" parent="Mailbox/VBoxContainer/HBoxContainer/ReadingPart"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "WHO"
+
+[node name="Line" type="ColorRect" parent="Mailbox/VBoxContainer/HBoxContainer/ReadingPart"]
+custom_minimum_size = Vector2(0, 2.5)
+layout_mode = 2
+color = Color(0.2784314, 0.6039216, 0, 1)
+
+[node name="MailTextLabel" type="RichTextLabel" parent="Mailbox/VBoxContainer/HBoxContainer/ReadingPart"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8y1dy")
+text = "MAIL TEXT CONTENT"
+
+[node name="AskDialog" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="AskDialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2784314, 0.6039216, 0, 0.5882353)
+
+[node name="DialogBox" type="ColorRect" parent="AskDialog"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -115.0
+offset_right = 250.0
+offset_bottom = 115.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="AskDialog/DialogBox"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -11.5
+offset_right = 92.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start the interoggation?"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="AskDialog/DialogBox"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="YesButton" type="Button" parent="AskDialog/DialogBox/Buttons"]
+layout_mode = 2
+text = "YES"
+
+[node name="NoButton" type="Button" parent="AskDialog/DialogBox/Buttons"]
+layout_mode = 2
+text = "NO"
+
+[node name="SFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonsArea/Buttons/MailboxButton" to="." method="_on_mailbox_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonsArea/Buttons/SimulationsLayersButton" to="." method="_on_simulations_layers_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonsArea/Buttons/AskerButton" to="." method="_on_asker_button_pressed"]
+[connection signal="item_selected" from="SimulationsLayers/VBoxContainer/HBoxContainer/LayersItemList" to="." method="_on_layers_item_list_item_selected"]
+[connection signal="item_selected" from="Mailbox/VBoxContainer/HBoxContainer/MailsPart/MailsItemList" to="." method="_on_mails_item_list_item_selected"]
+[connection signal="pressed" from="AskDialog/DialogBox/Buttons/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="AskDialog/DialogBox/Buttons/NoButton" to="." method="_on_no_button_pressed"]

@@ -1,2 +1,4 @@
 - 1: Reboot done [TUTORIAL]
 - 2: Still an "angel" [LITTLE MAZE]
+- 3: Be ready operator [CHARACTER B INTRODUCED]
+- 4: A has to talk [A INTERROGATION'S]

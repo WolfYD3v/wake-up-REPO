@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6xaio6h3qg4t"]
+[gd_scene load_steps=4 format=3 uid="uid://b6xaio6h3qg4t"]
 
 [ext_resource type="Script" uid="uid://dujaxdxc10wjo" path="res://scenes/options_scene/options.gd" id="1_biovg"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="1_r1nbh"]
 [ext_resource type="PackedScene" uid="uid://d27kdytywt0ui" path="res://scenes/options_scene/output_server_config/output_server_config.tscn" id="2_cnbx3"]
 
 [node name="Options" type="Control"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_r1nbh")
 script = ExtResource("1_biovg")
 
 [node name="BG" type="ColorRect" parent="."]
@@ -20,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.21176471, 0.21176471, 0.21176471, 0.7921569)
+color = Color(0, 0, 0, 1)
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -48,6 +50,11 @@ file_mode = 0
 access = 2
 use_native_dialog = true
 
+[node name="AdvancedInterfaceEnablerButton" type="Button" parent="Buttons"]
+layout_mode = 2
+focus_mode = 0
+text = "CHANGE ADVANCED INTERFACE VISIBILITY (NOT ENABLE)"
+
 [node name="CloseButton" type="Button" parent="Buttons"]
 layout_mode = 2
 focus_mode = 0
@@ -61,11 +68,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3137255, 0.3137255, 0.3137255, 0.6627451)
+color = Color(0.2784314, 0.6039216, 0, 0.5882353)
 
 [node name="OutputServerConfig" parent="." instance=ExtResource("2_cnbx3")]
+visible = false
 layout_mode = 1
 
+[node name="ButtonSFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="mouse_entered" from="Buttons/OutputServerButton" to="." method="button_hover"]
+[connection signal="pressed" from="Buttons/OutputServerButton" to="." method="button_clicked"]
 [connection signal="pressed" from="Buttons/OutputServerButton" to="." method="_on_output_server_button_pressed"]
-[connection signal="file_selected" from="Buttons/OutputServerButton/KeyInputFileDialog" to="." method="_on_key_input_file_dialog_file_selected"]
+[connection signal="canceled" from="Buttons/OutputServerButton/KeyInputFileDialog" to="." method="_on_key_input_file_dialog_canceled"]
+[connection signal="mouse_entered" from="Buttons/AdvancedInterfaceEnablerButton" to="." method="button_hover"]
+[connection signal="pressed" from="Buttons/AdvancedInterfaceEnablerButton" to="." method="button_clicked"]
+[connection signal="pressed" from="Buttons/AdvancedInterfaceEnablerButton" to="." method="_on_advanced_interface_enabler_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/CloseButton" to="." method="button_hover"]
+[connection signal="pressed" from="Buttons/CloseButton" to="." method="button_clicked"]
 [connection signal="pressed" from="Buttons/CloseButton" to="." method="_on_close_button_pressed"]

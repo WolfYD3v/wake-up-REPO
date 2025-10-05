@@ -1,20 +1,212 @@
-[gd_scene load_steps=4 format=3 uid="uid://y16ed71olbgm"]
+[gd_scene load_steps=11 format=3 uid="uid://y16ed71olbgm"]
 
-[ext_resource type="PackedScene" uid="uid://dx235g3ifssim" path="res://scenes/simulations/all_simulations/simulation_1.tscn" id="1_5kkwg"]
 [ext_resource type="Script" uid="uid://cp11jst4yhtxt" path="res://scenes/simulations/simulations_layers/simulations_layers.gd" id="1_v8wxt"]
+[ext_resource type="PackedScene" uid="uid://bd744hjv1mwyl" path="res://assets/models/simulation_wall.tscn" id="3_h68it"]
+[ext_resource type="PackedScene" uid="uid://b3j2wg0xfdrtt" path="res://assets/models/simulation_door.tscn" id="4_8y2fu"]
+[ext_resource type="PackedScene" uid="uid://bko2ce7x1u4wo" path="res://assets/models/simulation_floor.tscn" id="5_iajbu"]
+[ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="6_826v5"]
+[ext_resource type="PackedScene" uid="uid://804fliq83aew" path="res://scenes/simulations/questioning_scene/questioning_scene.tscn" id="7_oymno"]
+[ext_resource type="AudioStream" uid="uid://c8yy6fv4afi50" path="res://assets/sfxs/text.wav" id="9_72ea8"]
+[ext_resource type="AudioStream" uid="uid://br5u7fd7vh6yl" path="res://assets/musics/simulations_ambiance.wav" id="10_bhjcv"]
 
-[sub_resource type="Environment" id="Environment_v8wxt"]
+[sub_resource type="Environment" id="Environment_13j70"]
+background_mode = 1
+background_color = Color(0.21230483, 0.21230483, 0.21230483, 1)
+fog_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4pxf"]
+font = ExtResource("6_826v5")
+font_size = 65
 
 [node name="SimulationsLayers" type="Node3D"]
 script = ExtResource("1_v8wxt")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.87581, 2.750677, -4.0102196)
-
 [node name="AllSimulations" type="Node3D" parent="."]
 process_mode = 4
 
-[node name="Simulation1" parent="AllSimulations" instance=ExtResource("1_5kkwg")]
+[node name="Simulation1" type="Node3D" parent="AllSimulations"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_v8wxt")
+[node name="Map" type="Node3D" parent="AllSimulations/Simulation1"]
+
+[node name="SimulationWall" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 3)
+
+[node name="SimulationWall2" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 0, 3)
+
+[node name="SimulationWall3" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 3)
+
+[node name="SimulationWall20" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, -11)
+
+[node name="SimulationWall21" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2, 0, -11)
+
+[node name="SimulationWall22" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -2, 0, -11)
+
+[node name="SimulationWall23" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, -2, 0, -1)
+
+[node name="SimulationWall24" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 2, 0, -1)
+
+[node name="SimulationWall4" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, 3)
+
+[node name="SimulationWall5" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, 1)
+
+[node name="SimulationWall6" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -1)
+
+[node name="SimulationWall7" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -3)
+
+[node name="SimulationWall8" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -5)
+
+[node name="SimulationWall9" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -7)
+
+[node name="SimulationWall10" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -9)
+
+[node name="SimulationWall11" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 2, 0, -11)
+
+[node name="SimulationWall12" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -1.9999994, 0, -11)
+
+[node name="SimulationWall13" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -1.9999995, 0, -9)
+
+[node name="SimulationWall14" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -1.9999998, 0, -7)
+
+[node name="SimulationWall15" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -1.9999999, 0, -5)
+
+[node name="SimulationWall16" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2, 0, -3)
+
+[node name="SimulationWall17" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.0000002, 0, -1)
+
+[node name="SimulationWall18" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.0000005, 0, 1)
+
+[node name="SimulationWall19" parent="AllSimulations/Simulation1/Map" instance=ExtResource("3_h68it")]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, -2.0000007, 0, 3)
+
+[node name="SimulationDoor" parent="AllSimulations/Simulation1/Map" instance=ExtResource("4_8y2fu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="SimulationWall25" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 2)
+
+[node name="SimulationWall26" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SimulationWall27" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 2)
+
+[node name="SimulationWall28" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 0)
+
+[node name="SimulationWall29" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2)
+
+[node name="SimulationWall30" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+
+[node name="SimulationWall31" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -2)
+
+[node name="SimulationWall32" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -4)
+
+[node name="SimulationWall33" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -2)
+
+[node name="SimulationWall34" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -4)
+
+[node name="SimulationWall35" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -2)
+
+[node name="SimulationWall36" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -4)
+
+[node name="SimulationWall37" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -6)
+
+[node name="SimulationWall38" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8)
+
+[node name="SimulationWall39" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -6)
+
+[node name="SimulationWall40" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -8)
+
+[node name="SimulationWall41" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -6)
+
+[node name="SimulationWall42" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -8)
+
+[node name="SimulationWall43" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
+
+[node name="SimulationWall45" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -10)
+
+[node name="SimulationWall47" parent="AllSimulations/Simulation1/Map" instance=ExtResource("5_iajbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="AllSimulations/Simulation1"]
+environment = SubResource("Environment_13j70")
+
+[node name="GUI" type="CanvasLayer" parent="AllSimulations/Simulation1"]
+
+[node name="BeginTexts" type="Control" parent="AllSimulations/Simulation1/GUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="AllSimulations/Simulation1/GUI/BeginTexts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BeginTextsLabel" type="Label" parent="AllSimulations/Simulation1/GUI/BeginTexts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_x4pxf")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="QuestioningScene" parent="AllSimulations/Simulation1/GUI" instance=ExtResource("7_oymno")]
+visible = false
+
+[node name="ButtonSFXAudioStreamPlayer" type="AudioStreamPlayer" parent="AllSimulations/Simulation1"]
+stream = ExtResource("9_72ea8")
+
+[node name="AmbianceAudioStreamPlayer" type="AudioStreamPlayer" parent="AllSimulations/Simulation1"]
+stream = ExtResource("10_bhjcv")
+volume_db = -10.0
+autoplay = true

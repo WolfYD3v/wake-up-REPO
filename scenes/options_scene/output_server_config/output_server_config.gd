@@ -3,6 +3,7 @@ class_name OutputServerConfig
 
 @onready var server_output_ip_adress_line_edit: LineEdit = $Nodes/ServerOutputIpAdressLineEdit
 @onready var cover: ColorRect = $Cover
+@onready var button_sfx_audio_stream_player: AudioStreamPlayer = $ButtonSFXAudioStreamPlayer
 
 var base_server_output_ip_adress: String = "192.168.13.12"
 
@@ -44,3 +45,18 @@ func _on_apply_button_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	hide()
+
+
+func button_hover() -> void:
+	if button_sfx_audio_stream_player.playing:
+		button_sfx_audio_stream_player.stop()
+	button_sfx_audio_stream_player.stream = load("res://assets/sfxs/button_hover.wav")
+	button_sfx_audio_stream_player.pitch_scale = randf_range(0.2, 5.0)
+	button_sfx_audio_stream_player.play()
+
+func button_clicked() -> void:
+	if button_sfx_audio_stream_player.playing:
+		button_sfx_audio_stream_player.stop()
+	button_sfx_audio_stream_player.stream = load("res://assets/sfxs/button_clicked.wav")
+	button_sfx_audio_stream_player.pitch_scale = randf_range(3.5, 5.0)
+	button_sfx_audio_stream_player.play()

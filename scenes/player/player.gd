@@ -5,6 +5,7 @@ class_name Player
 @onready var collision_raycast: RayCast3D = $CollisionRaycast
 @onready var movement_raycast: RayCast3D = $MovementRaycast
 @onready var rotation_indicator: Node3D = $GUI/SubViewport/RotationIndicator
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @export var can_move: bool = true
 @export var can_rotate: bool = true
@@ -53,8 +54,12 @@ func _move(move_factor: float) -> void:
 			var angle = get_rotation().y 
 			for move_step: int in range(walk_steps):
 				if not movement_raycast.is_colliding():
+					if not audio_stream_player_3d.playing:
+						await get_tree().create_timer(0.05).timeout
+						audio_stream_player_3d.pitch_scale = randf_range(0.7, 1.1)
+						audio_stream_player_3d.play()
 					velocity = Vector3(sin(angle),0, cos(angle)) * move_factor / walk_steps
 					move_and_slide()
-				await get_tree().create_timer(0.05).timeout
+					await get_tree().create_timer(0.05).timeout
 			await get_tree().create_timer(0.2).timeout
 			is_moving = false

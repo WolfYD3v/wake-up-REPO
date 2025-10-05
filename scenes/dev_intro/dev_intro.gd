@@ -10,16 +10,30 @@ signal dev_intro_ended
 @onready var red_layer: ColorRect = $RedLayer
 @onready var loading_progress_bar: ProgressBar = $GUI_Elements/Infos/LoadingProgressBar
 
+
+
 func _ready() -> void:
 	red_layer.hide()
 	player_rendered.hide()
-	
 	loading_progress_bar.value = 0.0
 	progress_loading()
-	
 	await get_tree().create_timer(11.5).timeout
 	dev_intro_ended.emit()
 	
+	if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
+		await play_screamer()
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_RESIZE_DISABLED , true)
+	call_deferred("queue_free")
+
+
+
+func progress_loading() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(loading_progress_bar, "value", 100, 11.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+
+
+
+func play_screamer() -> void:
 	gui_elements.hide()
 	player_rendered.show()
 	
@@ -40,9 +54,3 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.5).timeout
 	audio_stream_player.stop()
-	#OS.shell_open("https://www.youtube.com/watch?v=XqZsoesa55w")
-	call_deferred("queue_free")
-
-func progress_loading() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(loading_progress_bar, "value", 100, 11.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)

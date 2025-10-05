@@ -8,7 +8,17 @@ Main menu song:
 
 TV Static shader:
 - AT https://godotshaders.com/shader/tv-noise-effect/
-- FROM tuanisapps
+- BY tuanisapps
 
 Open a url inside the player's brower:
 - AT https://forum.godotengine.org/t/how-can-i-open-url-on-browser-app-in-android/27518
+
+SFXs:
+- AT https://sfxr.me/
+
+Simulation 3 ambiance song:
+- AT https://pixabay.com/fr/music/pop-breakfast-403288/
+- BY MinihouseRacecodOfficial
+
+Simulations ambiance song:
+- xxx

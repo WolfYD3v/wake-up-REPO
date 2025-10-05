@@ -19,11 +19,18 @@ config/icon="res://icon.svg"
 
 AutoScreenshot="*res://globals/auto_screenshot.gd"
 InputsLogger="*res://globals/inputs_logger.gd"
+Mails="*res://globals/mails.gd"
+Settings="*res://globals/settings.gd"
+AutoDownload="*res://globals/auto_download.gd"
 
 [display]
 
 window/size/mode=2
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/graph_2d/plugin.cfg")
 
 [rendering]
 

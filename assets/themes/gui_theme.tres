@@ -9,6 +9,11 @@
 [resource]
 default_font = ExtResource("1_kyuro")
 default_font_size = 30
+Button/colors/font_color = Color(0.70796657, 0.7079665, 0.7079666, 1)
+Button/colors/font_focus_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
+Button/colors/font_hover_color = Color(0.40451145, 0.4045111, 0.40451103, 1)
+Button/font_sizes/font_size = 18
 Label/font_sizes/font_size = 30
 Label/styles/focus = SubResource("StyleBoxEmpty_kyuro")
 Label/styles/normal = SubResource("StyleBoxEmpty_ys4nt")
+RichTextLabel/fonts/normal_font = ExtResource("1_kyuro")
