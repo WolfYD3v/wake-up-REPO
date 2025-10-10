@@ -11,6 +11,7 @@ extends Simulation
 @onready var blocker_3_area_3d: Area3D = $Blocker3Area3D
 @onready var blocker_4_area_3d: Area3D = $Blocker4Area3D
 @onready var change_ambiance_area_3d: Area3D = $ChangeAmbianceArea3D
+@onready var edit_simulation_area_3d: Area3D = $EditSimulationArea3D
 
 var max_screenshots: int = 5
 
@@ -59,3 +60,9 @@ func _on_change_ambiance_area_3d_body_entered(body: Node3D) -> void:
 		ambiance_audio_stream_player.stream = load("res://assets/musics/775441_Limbo.mp3")
 		ambiance_audio_stream_player.play(15.30)
 		delete_area_3d(change_ambiance_area_3d)
+
+
+func _on_edit_simulation_area_3d_body_entered(body: Node3D) -> void:
+	if body is Player:
+		OS.alert("Modications pushed", "Wake Up.exe")
+		delete_area_3d(edit_simulation_area_3d)

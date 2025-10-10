@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FICHIER_URL="https://pastebin.com/raw/VC92j0U2"
-CHEMIN_TELECHARGEMENT="$HOME/download_test.txt"
+FICHIER_URL="https://i.imgur.com/AQJaipK.png"
+CHEMIN_TELECHARGEMENT="$HOME/capture_038.png"
 
 # 1. Télécharger le fichier
 echo "Downloading '$FICHIER_URL' as '$CHEMIN_TELECHARGEMENT'..."

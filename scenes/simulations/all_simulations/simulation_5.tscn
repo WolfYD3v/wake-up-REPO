@@ -22,13 +22,16 @@ albedo_color = Color(0.24477637, 0.2447764, 0.24477637, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_ybqgp"]
 material = SubResource("StandardMaterial3D_l0tvx")
-text = "You are not alone"
+text = "Allow me to do
+change the rules,
+whould you?"
 font_size = 25
 curve_step = 0.1
 depth = 0.0
 
 [node name="Simulation5" instance=ExtResource("1_gjny8")]
 script = ExtResource("2_mpiy0")
+next_simulation_id = 6
 
 [node name="Player" parent="." index="0"]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 1.699)
@@ -543,7 +546,7 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -4, 0.5, -8)
 [node name="SimulationMazeWall10" parent="Map/Blocker5" index="1" instance=ExtResource("4_ci7f3")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -2, 0.5, -8)
 
-[node name="Blocker1Area3D" type="Area3D" parent="." index="5"]
+[node name="Blocker1Area3D" type="Area3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6000001)
 collision_layer = 2
 
@@ -551,7 +554,7 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
 shape = SubResource("BoxShape3D_mpiy0")
 
-[node name="Blocker2Area3D" type="Area3D" parent="." index="6"]
+[node name="Blocker2Area3D" type="Area3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.4)
 collision_layer = 2
 
@@ -559,7 +562,7 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
 shape = SubResource("BoxShape3D_mpiy0")
 
-[node name="Blocker3Area3D" type="Area3D" parent="." index="7"]
+[node name="Blocker3Area3D" type="Area3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.2000003)
 collision_layer = 2
 
@@ -567,7 +570,7 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
 shape = SubResource("BoxShape3D_mpiy0")
 
-[node name="Blocker4Area3D" type="Area3D" parent="." index="8"]
+[node name="Blocker4Area3D" type="Area3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9)
 collision_layer = 2
 
@@ -575,11 +578,19 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
 shape = SubResource("BoxShape3D_mpiy0")
 
-[node name="ChangeAmbianceArea3D" type="Area3D" parent="." index="9"]
+[node name="ChangeAmbianceArea3D" type="Area3D" parent="." index="8"]
 transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 9.5, 0, -6.9)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ChangeAmbianceArea3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
+shape = SubResource("BoxShape3D_l0tvx")
+
+[node name="EditSimulationArea3D" type="Area3D" parent="." index="9"]
+transform = Transform3D(-1, 0, 1.3909066e-08, 0, 1, 0, -1.3909066e-08, 0, -1, 12.5, 0, -14.9)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EditSimulationArea3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5856446)
 shape = SubResource("BoxShape3D_l0tvx")
 
@@ -604,7 +615,7 @@ transform = Transform3D(-1.0000001, 0, 1.39090695e-08, 0, 1, 0, -1.39090695e-08,
 mesh = SubResource("QuadMesh_l0tvx")
 
 [node name="TextMeshInstance3D" type="MeshInstance3D" parent="." index="15"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.3, 0.2, -9.9)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.3, 0.3, -9.9)
 mesh = SubResource("TextMesh_ybqgp")
 
 [connection signal="leave_simulation" from="SimulationLeaver2" to="." method="_on_simulation_leaver_leave_simulation"]
@@ -613,3 +624,4 @@ mesh = SubResource("TextMesh_ybqgp")
 [connection signal="body_entered" from="Blocker3Area3D" to="." method="_on_blocker_3_area_3d_body_entered"]
 [connection signal="body_entered" from="Blocker4Area3D" to="." method="_on_blocker_4_area_3d_body_entered"]
 [connection signal="body_entered" from="ChangeAmbianceArea3D" to="." method="_on_change_ambiance_area_3d_body_entered"]
+[connection signal="body_entered" from="EditSimulationArea3D" to="." method="_on_edit_simulation_area_3d_body_entered"]

@@ -10,12 +10,14 @@ class_name Simulation
 @onready var ambiance_audio_stream_player: AudioStreamPlayer = $AmbianceAudioStreamPlayer
 @onready var advanced_interface: AdvancedInterface = $GUI/AdvancedInterface
 
-@export_range(1, 5) var next_simulation_id: int = 1
+@export_range(1, 8) var next_simulation_id: int = 1
 @export var begin_texts: Array[String] = []
+@export var questionning_scene_questions: Array[Question] = []
 
 var tween
 
 func _ready() -> void:
+	questioning_scene.questions = questionning_scene_questions
 	advanced_interface.visible = Settings.advanced_interface_visibility
 	player.can_move = false
 	player.can_rotate = false
@@ -30,6 +32,7 @@ func _ready() -> void:
 	InputsLogger.enable_auto_inputs_logging()
 
 func change_simulation_layer() -> void:
+	InputsLogger.disable_auto_inputs_logging()
 	player.can_move = false
 	player.can_rotate = false
 	if tween:
@@ -39,7 +42,6 @@ func change_simulation_layer() -> void:
 	play_sfx("res://assets/sfxs/change_level.wav", 10.0, 0.2)
 	await tween.finished
 	button_sfx_audio_stream_player.stop()
-	InputsLogger.disable_auto_inputs_logging()
 	await get_tree().create_timer(4.0).timeout
 	ambiance_audio_stream_player.stop()
 	questioning_scene.show()

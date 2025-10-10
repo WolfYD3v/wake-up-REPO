@@ -99,6 +99,14 @@ skeleton = NodePath("")
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
+[node name="Filler" type="ColorRect" parent="GUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Elements" type="VBoxContainer" parent="GUI"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,15 +126,8 @@ layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Filler" type="ColorRect" parent="GUI"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="StaticTVShader" type="ColorRect" parent="GUI"]
+visible = false
 z_index = 2
 material = ExtResource("3_imf5x")
 anchors_preset = 15

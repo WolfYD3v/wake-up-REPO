@@ -9,7 +9,7 @@
 [ext_resource type="Material" uid="uid://du8bei1wwuhkb" path="res://assets/shaders/tv_noise.tres" id="4_pqo50"]
 [ext_resource type="PackedScene" uid="uid://bayvs65mc7p6a" path="res://scenes/player/player.tscn" id="5_1gh4i"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4nqq7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pqo50"]
 viewport_path = NodePath("World")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pqo50"]
@@ -54,7 +54,7 @@ offset_right = 197.0
 offset_bottom = 449.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_4nqq7")
+texture = SubResource("ViewportTexture_pqo50")
 
 [node name="TVAnalogicShader" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_pqo50")
@@ -116,6 +116,7 @@ fit_content = true
 horizontal_alignment = 2
 
 [node name="Black" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -126,10 +127,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AdvancedInterface" parent="." instance=ExtResource("2_j7w1a")]
+visible = false
 z_index = 1
 layout_mode = 1
 
 [node name="StartElement" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -159,6 +162,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Disconnected" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -194,6 +198,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="StaticTVShader" type="ColorRect" parent="."]
+visible = false
 z_index = 2
 material = ExtResource("4_pqo50")
 layout_mode = 1
@@ -211,6 +216,7 @@ environment = SubResource("Environment_pqo50")
 
 [node name="Camera3D" type="Camera3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
+current = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="World/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.371141e-08, 1)

@@ -115,10 +115,11 @@ func add_text_to_chat(as_who: String, msg_content: String, text_sfx_stream: Audi
 	msg_rich_text_label.horizontal_alignment = dialog_text_positions_as_who.get(as_who)
 	msg_rich_text_label.bbcode_enabled = true
 	msg_rich_text_label.custom_minimum_size.y = 30
-	var msg_text: String = ""
+	var msg_text: String = "Use your keyboard to type..."
 	var words: Array[String] = segmentagisement_text_as_array(msg_content)
 	await get_tree().create_timer(0.05).timeout
 	msg_rich_text_label.text = "[color=black][u][b]" + as_who + ":[/b][/u] " + msg_text + "[/color]"
+	msg_text = ""
 	for word: String in words:
 		if as_who == "You":
 			await keyboard_input_done

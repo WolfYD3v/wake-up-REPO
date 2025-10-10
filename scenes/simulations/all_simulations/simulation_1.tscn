@@ -1,14 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx235g3ifssim"]
+[gd_scene load_steps=12 format=3 uid="uid://dx235g3ifssim"]
 
 [ext_resource type="PackedScene" uid="uid://mixw4uuhjd45" path="res://scenes/simulations/base_simulation.tscn" id="1_k2hkm"]
 [ext_resource type="PackedScene" uid="uid://bd744hjv1mwyl" path="res://assets/models/simulation_wall.tscn" id="2_4n7ye"]
+[ext_resource type="Script" uid="uid://xrm8hh10at07" path="res://scenes/simulations/questioning_scene/question.gd" id="2_ukhj7"]
 [ext_resource type="PackedScene" uid="uid://b3j2wg0xfdrtt" path="res://assets/models/simulation_door.tscn" id="3_dv3no"]
 [ext_resource type="PackedScene" uid="uid://bko2ce7x1u4wo" path="res://assets/models/simulation_floor.tscn" id="4_elcwl"]
 [ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="4_nsos3"]
 
+[sub_resource type="Resource" id="Resource_genw2"]
+script = ExtResource("2_ukhj7")
+question = "So what did you do?"
+good_answer = "Nothing"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_imf5x"]
+script = ExtResource("2_ukhj7")
+question = "I repeat, what did you do?"
+good_answer = "No... nothing"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_irnnj"]
+script = ExtResource("2_ukhj7")
+question = "What did you do..."
+good_answer = "Hu?"
+bad_answers = Array[String](["Tell me, go on!"])
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_d4ars"]
+script = ExtResource("2_ukhj7")
+question = "Still acting like you are an angel..."
+good_answer = "..."
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
+[sub_resource type="Resource" id="Resource_vgasg"]
+script = ExtResource("2_ukhj7")
+question = "I suggest you keep sleep ok."
+good_answer = ">>>"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
 [node name="Simulation1" instance=ExtResource("1_k2hkm")]
 next_simulation_id = 2
 begin_texts = Array[String](["You have to Wake Up", "The more you Stay,", "less you will get."])
+questionning_scene_questions = Array[ExtResource("2_ukhj7")]([SubResource("Resource_genw2"), SubResource("Resource_imf5x"), SubResource("Resource_irnnj"), SubResource("Resource_d4ars"), SubResource("Resource_vgasg")])
 
 [node name="Player" parent="." index="0"]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 1.6985266)

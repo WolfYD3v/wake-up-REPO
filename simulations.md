@@ -2,3 +2,6 @@
 - 2: Still an "angel" [LITTLE MAZE]
 - 3: Be ready operator [CHARACTER B INTRODUCED]
 - 4: A has to talk [A INTERROGATION'S]
+- 5: B (Player) is being watched right now [B SCREENSHOTING REVEALED]
+- 6: Messy simulation [NEW MOVING MECANIC]
+- 7: C is here [CHARACTER C REALLY INTRODUCED]

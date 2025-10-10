@@ -1,0 +1,190 @@
+[gd_scene load_steps=9 format=3 uid="uid://7lky6uo8tevi"]
+
+[ext_resource type="Script" uid="uid://c1r6r1ri03jph" path="res://scenes/simulations/all_simulations/simulation_8.gd" id="1_nmcdd"]
+[ext_resource type="PackedScene" uid="uid://b86tlj0labmoo" path="res://city_render/city_render.tscn" id="2_nmcdd"]
+[ext_resource type="Material" uid="uid://du8bei1wwuhkb" path="res://assets/shaders/tv_noise.tres" id="3_q01du"]
+[ext_resource type="AudioStream" uid="uid://br5u7fd7vh6yl" path="res://assets/musics/simulations_ambiance.wav" id="4_jjeea"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="4_sk1xu"]
+
+[sub_resource type="Animation" id="Animation_q01du"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.6, 4.55, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nmcdd"]
+resource_name = "move_camera"
+length = 500.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 350, 500),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(6.6, 4.55, 0), Vector3(6.6, 6.15, -3.5), Vector3(3.6, 6.15, -3.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 500),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 500),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 50.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jjeea"]
+_data = {
+&"RESET": SubResource("Animation_q01du"),
+&"move_camera": SubResource("Animation_nmcdd")
+}
+
+[node name="Simulation8" type="Node3D"]
+script = ExtResource("1_nmcdd")
+
+[node name="CityRender" parent="." instance=ExtResource("2_nmcdd")]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6, 4.55, 0)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jjeea")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Cover" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CTextLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.35906908, 0.35906908, 0.35906908, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StaticTVShader" type="ColorRect" parent="CanvasLayer"]
+z_index = 2
+material = ExtResource("3_q01du")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = 675.0
+offset_bottom = 1388.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_sk1xu")
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[u][b]AUDIO[/b][/u]
+[u]Main menu ambiance:[/u] Limbo
+by dct2204 (https://www.newgrounds.com/audio/listen/775441)
+[u]Simulation 3 ambiance:[/u] breakfast
+by MinihouseRacecodOfficial (https://pixabay.com/fr/music/pop-breakfast-403288/)
+[u]Simulations ambiance:[/u] ...
+[u]Exterior ambiance:[/u] Cold Wind Ambience
+by Virtual_Vibes (https://pixabay.com/fr/sound-effects/cold-wind-ambience-404245/)
+[u]Sound effects (SFX):[/u] jsfxr (https://sfxr.me/)
+
+[u][b]MODELS[/b][/u]
+[u]Exterior buildings:[/u]
+\"Big Soviet Panel House [Lowpoly]\" (https://skfb.ly/pzCZq) by irmich5546 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+\"Soviet Panel House [Lowpoly]\" (https://skfb.ly/pzwsQ) by irmich5546 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+[u]Simulations models:[/u] Made by myself
+
+[u][b]CODE[/b][/u]
+[u]Open a url inside the player's brower:[/u]
+(https://forum.godotengine.org/t/how-can-i-open-url-on-browser-app-in-android/27518)
+[u]TV Static shader:[/u]
+(https://godotshaders.com/shader/tv-noise-effect/) thanks to tuanisapps
+[u]Full screen capture:[/u] Take Full Monitor Screenshots in Godot (No Plugins Needed!)
+(https://www.youtube.com/watch?v=Kgl-N_Oi1UY)
+[u]Game code:[/u] Made by myself
+
+
+
+
+
+
+[b]THANKS FOR PLAYING[/b]
+Game made by WolfY_D3v
+Copyright WolfY_Corp, 2025"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CreditsLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jjeea")
+volume_db = 5.0
+autoplay = true

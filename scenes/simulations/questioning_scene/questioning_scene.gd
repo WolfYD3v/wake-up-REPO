@@ -19,13 +19,13 @@ func _ready() -> void:
 	static_tv_shader.hide()
 
 func start_questioning() -> void:
+	filler.show()
+	static_tv_shader.show()
+	play_sfx("res://assets/musics/775441_Limbo.mp3", 25.0, 1.0)
+	await get_tree().create_timer(1.5).timeout
+	sfx_audio_stream_player.stop()
 	if not questions.is_empty():
-		static_tv_shader.show()
-		play_sfx("res://assets/musics/775441_Limbo.mp3", 25.0, 1.0)
-		await get_tree().create_timer(1.5).timeout
-		sfx_audio_stream_player.stop()
 		static_tv_shader.hide()
-		start_questioning()
 		play_sfx("res://assets/musics/775441_Limbo.mp3", 25.0, 1.0)
 		sfx_audio_stream_player.stream_paused = false
 		for question: Question in questions:
@@ -49,7 +49,8 @@ func start_questioning() -> void:
 		sfx_audio_stream_player.stream_paused = false
 		filler.show()
 		await get_tree().create_timer(5.0).timeout
-		questioning_ended.emit()
+	static_tv_shader.hide()
+	questioning_ended.emit()
 
 func _create_buttons(buttons_to_create: Array) -> void:
 	var good_answer_text: String = buttons_to_create[0]

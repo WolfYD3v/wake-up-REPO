@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuixrvi0dstbv"]
+[gd_scene load_steps=8 format=3 uid="uid://cuixrvi0dstbv"]
 
 [ext_resource type="PackedScene" uid="uid://mixw4uuhjd45" path="res://scenes/simulations/base_simulation.tscn" id="1_nx2j5"]
 [ext_resource type="PackedScene" uid="uid://bd744hjv1mwyl" path="res://assets/models/simulation_wall.tscn" id="2_8qh1h"]
+[ext_resource type="Script" uid="uid://xrm8hh10at07" path="res://scenes/simulations/questioning_scene/question.gd" id="2_f0pt8"]
 [ext_resource type="PackedScene" uid="uid://drqil5kjrcj5s" path="res://assets/models/simulation_maze_wall.tscn" id="4_8qh1h"]
 [ext_resource type="PackedScene" uid="uid://bko2ce7x1u4wo" path="res://assets/models/simulation_floor.tscn" id="4_f0pt8"]
 [ext_resource type="FontFile" uid="uid://c7p2iy6sb5m1h" path="res://assets/fonts/MeieScript-Regular.ttf" id="5_0osw4"]
 
+[sub_resource type="Resource" id="Resource_gkb8t"]
+script = ExtResource("2_f0pt8")
+question = "Are you ready?"
+good_answer = "Yes, I am"
+metadata/_custom_type_script = "uid://xrm8hh10at07"
+
 [node name="Simulation2" instance=ExtResource("1_nx2j5")]
 next_simulation_id = 3
 begin_texts = Array[String](["If you are ready, go throw to this less massive maze", "And don't think use the bridges you can't anymore", "We are waiting"])
+questionning_scene_questions = Array[ExtResource("2_f0pt8")]([SubResource("Resource_gkb8t")])
 
 [node name="Player" parent="." index="0"]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 6, 0, 4)

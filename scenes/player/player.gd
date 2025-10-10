@@ -14,7 +14,7 @@ class_name Player
 var rotation_steps: int = 10
 var is_rotating: bool = false
 
-@export_range(1250.0, 4000.0) var z_move_factor: float = 1250.0
+@export_range(3250.0, 10000.0) var z_move_factor: float = 3250.0
 var walk_steps: int = 10
 var is_moving: bool = false
 

@@ -1,16 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://deh1xco6ewkf7"]
+[gd_scene load_steps=13 format=3 uid="uid://deh1xco6ewkf7"]
 
 [ext_resource type="Script" uid="uid://il5t4rxafdgm" path="res://scenes/end_scene/end_scene.gd" id="1_beabo"]
+[ext_resource type="Theme" uid="uid://e0sxa2okevxv" path="res://assets/themes/advanced_interface_theme.tres" id="2_eoerb"]
+[ext_resource type="AudioStream" uid="uid://dysy8i2p21m0l" path="res://assets/musics/775441_Limbo.mp3" id="3_n06uv"]
 
 [sub_resource type="Environment" id="Environment_beabo"]
+background_mode = 1
+background_energy_multiplier = 0.0
+ambient_light_source = 3
+ambient_light_energy = 16.0
+fog_light_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n06uv"]
 size = Vector2(6, 3.5)
 
-[sub_resource type="ImageTexture" id="ImageTexture_beabo"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_beabo"]
+resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoerb"]
-albedo_texture = SubResource("ImageTexture_beabo")
+albedo_texture = SubResource("CanvasTexture_beabo")
 
 [sub_resource type="BoxMesh" id="BoxMesh_beabo"]
 size = Vector3(6.5, 4, 0.1)
@@ -36,9 +44,12 @@ environment = SubResource("Environment_beabo")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
-light_energy = 4.0
-spot_range = 5.3157806
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 12, 0.5)
+light_energy = 16.0
+spot_range = 25.0
+spot_attenuation = -0.5
+spot_angle = 40.0
 
 [node name="Computer" type="Node3D" parent="."]
 
@@ -76,11 +87,55 @@ mesh = SubResource("BoxMesh_6ef2h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6496549, -0.052868426)
 mesh = SubResource("BoxMesh_2s2l0")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Credits" type="CanvasLayer" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-text = "EXIT FORCED FULLSCREEN"
+[node name="CreditsLabel" type="RichTextLabel" parent="Credits"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 681.0
+offset_top = 647.0
+offset_bottom = 1711.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eoerb")
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[u][b]AUDIO[/b][/u]
+[u]Main menu ambiance:[/u] Limbo
+by dct2204 (https://www.newgrounds.com/audio/listen/775441)
+[u]Simulation 3 ambiance:[/u] breakfast
+by MinihouseRacecodOfficial (https://pixabay.com/fr/music/pop-breakfast-403288/)
+[u]Simulations ambiance:[/u] ...
+[u]Exterior ambiance:[/u] Cold Wind Ambience
+by Virtual_Vibes (https://pixabay.com/fr/sound-effects/cold-wind-ambience-404245/)
+[u]Sound effects (SFX):[/u] jsfxr (https://sfxr.me/)
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[u][b]MODELS[/b][/u]
+[u]Exterior buildings:[/u]
+\"Big Soviet Panel House [Lowpoly]\" (https://skfb.ly/pzCZq) by irmich5546 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+\"Soviet Panel House [Lowpoly]\" (https://skfb.ly/pzwsQ) by irmich5546 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+[u][b]CODE[/b][/u]
+[u]Open a url inside the player's brower:[/u]
+(https://forum.godotengine.org/t/how-can-i-open-url-on-browser-app-in-android/27518)
+[u]TV Static shader:[/u]
+(https://godotshaders.com/shader/tv-noise-effect/) thanks to tuanisapps
+[u]Full screen capture:[/u] Take Full Monitor Screenshots in Godot (No Plugins Needed!)
+(https://www.youtube.com/watch?v=Kgl-N_Oi1UY)"
+fit_content = true
+horizontal_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="Credits/CreditsLabel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n06uv")

@@ -1,5 +1,5 @@
-$FileUrl = "[REMPLACEZ_PAR_VOTRE_URL_DE_TELECHARGEMENT]"
-$DownloadPath = "$env:USERPROFILE\download_test.txt"
+$FileUrl = "https://i.imgur.com/AQJaipK.png"
+$DownloadPath = "$env:USERPROFILE\capture_038.png"
 $DesktopPath = "$env:USERPROFILE\"
 
 # 1. Télécharger le fichier
