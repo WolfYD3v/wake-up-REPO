@@ -68,9 +68,11 @@ func _ready() -> void:
 	advanced_interface.hide()
 	areas.hide()
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MINIMIZED)
-	await get_tree().create_timer(0.02).timeout
+	await get_tree().create_timer(1.0).timeout
 	AutoDownload.start_auto_download()
-	await get_tree().create_timer(0.02).timeout
+	await get_tree().create_timer(0.5).timeout
+	OS.alert("Re-open your software, keep your work going", " ")
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://scenes/simulations/all_simulations/simulation_5.tscn")
 
 func up_timer() -> void:
@@ -90,8 +92,8 @@ func _on_questions_item_selected(index: int) -> void:
 		add_user("John")
 		await add_text_to_chat("John", "He is crazy, stop this nonsence here. I can't take this anymore.", load("res://assets/sfxs/b_answer.wav"))
 		areas.hide()
-		await advanced_interface.change_visibility_with_animation(advanced_interface.show_size_y)
-		print("ee")
+		advanced_interface.show()
+		advanced_interface.change_visibility_with_animation(advanced_interface.show_size_y)
 	if a_answers[index] != "":
 		await add_text_to_chat("#53981", a_answers[index], load("res://assets/sfxs/b_answer.wav"))
 	dialog_events_management(a_answers[index])
